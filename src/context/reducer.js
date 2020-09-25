@@ -3,9 +3,13 @@ import * as actionTypes from './actions'
 const reducer = (state, action) => {
     switch (action.type) {
         case actionTypes.GLOBAL_DATA:
+            const { confirmed, recovered, deaths, lastUpdate }= action.payload
             return {
                 ...state,
-                globalData: action.payload
+                globalData:{
+                    ...state.globalData,
+                     confirmed, recovered, deaths, lastUpdate 
+                }
             }
         case actionTypes.DAILY_DATA:
             return {
