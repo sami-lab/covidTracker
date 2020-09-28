@@ -32,15 +32,20 @@ function Main() {
   const { state, getGlobalData, getDailyData, getCountryList } = useContext(
     GlobalContext
   );
+  // const fetchdata = useCallback(() => {
+  //   getGlobalData();
+  //   getDailyData();
+  //   getCountryList();
+  // }, []);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
   useEffect(() => {
-    const fetchData = () => {
+    function fetchData() {
       getGlobalData();
       getDailyData();
       getCountryList();
-    };
+    }
     fetchData();
   }, []);
   const handleCountryChange = (country) => {
@@ -97,7 +102,6 @@ function Main() {
       <Grid item container justify="center">
         <Chart country={country} s />
       </Grid>
-      {console.log(state)}
     </Grid>
   );
 }
