@@ -32,11 +32,7 @@ function Main() {
   const { state, getGlobalData, getDailyData, getCountryList } = useContext(
     GlobalContext
   );
-  // const fetchdata = useCallback(() => {
-  //   getGlobalData();
-  //   getDailyData();
-  //   getCountryList();
-  // }, []);
+
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -47,7 +43,7 @@ function Main() {
       getCountryList();
     }
     fetchData();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const handleCountryChange = (country) => {
     getGlobalData(country);
     setCountry(country);
